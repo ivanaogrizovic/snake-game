@@ -16,6 +16,7 @@ var food = {
     y: 0
 };
 var score = 0;
+var hasStarted = false;
 
 // pushes possible x and y positions to seperate arrays
 for (i = 0; i <= canvas.width - cellSize; i += cellSize) {
@@ -80,10 +81,10 @@ function drawSnake() {
 }
 // keyboard interactions | direction != '...' doesn't let the snake go backwards
 function changeDirection(keycode) {
-    if (keycode == 37 && direction != 'right') { directionQueue = 'left'; }
-    else if (keycode == 38 && direction != 'down') { directionQueue = 'up'; }
-    else if (keycode == 39 && direction != 'left') { directionQueue = 'right'; }
-    else if (keycode == 40 && direction != 'top') { directionQueue = 'down' }
+    if (keycode == 65 && direction != 'right') { directionQueue = 'left'; }
+    else if (keycode == 87 && direction != 'down') { directionQueue = 'up'; }
+    else if (keycode == 68 && direction != 'left') { directionQueue = 'right'; }
+    else if (keycode == 83 && direction != 'top') { directionQueue = 'down' }
 }
 // changing the snake's movement
 function moveSnake() {
@@ -165,8 +166,9 @@ function game() {
     drawFood();
     moveSnake();
 }
+
 function newGame() {
-    direction = 'right'; // initial direction
+    direction = 'right';
     directionQueue = 'right';
     ctx.beginPath();
     createSnake();
@@ -179,4 +181,5 @@ function newGame() {
         loop = setInterval(game, fps);
     }
 }
+
 newGame();
