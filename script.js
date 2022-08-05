@@ -1,6 +1,7 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var scoreIs = document.getElementById('score');
+var hiScoreIs = document.getElementById('hiScore');
 var direction = '';
 var directionQueue = '';
 var fps = 70;
@@ -16,6 +17,7 @@ var food = {
     y: 0
 };
 var score = 0;
+var highScore = 0;
 var hasStarted = false;
 
 // pushes possible x and y positions to seperate arrays
@@ -170,6 +172,7 @@ function newGame() {
 }
 
 function reset() {
+    checkScore(score);
     setBackground();
     createSnake();
     drawSnake();
@@ -178,6 +181,15 @@ function reset() {
     directionQueue = 'right';
     score = 0;
     game();
+}
+
+function checkScore(newScore) {
+    if (newScore > highScore) {
+        highScore = newScore;
+        hiScoreIs.innerHTML = highScore;
+    } else {
+        return;
+    }
 }
 
 // modals
