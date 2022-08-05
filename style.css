@@ -14,7 +14,7 @@ body {
   font-size: 48px;
   color: #efb8cc;
   text-shadow: 4px 4px 4px #5c5f82;
-  background-image: url("2.gif");
+  background-image: url("background-image.gif");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
@@ -38,9 +38,7 @@ canvas {
   border: 10px solid white;
 }
 
-/* modals */
-
-/* .show-modal {
+.show-modal {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.75rem 3.5rem;
@@ -72,11 +70,6 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40%;
-
-  background-color: white;
-  padding: 1em;
-  border-radius: 5px;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
 
@@ -89,4 +82,4 @@ canvas {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-} */
+}

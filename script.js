@@ -32,7 +32,7 @@ function drawSquare(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, cellSize, cellSize);
 }
-// giving the food object its coordinates
+// giving the food its coordinates
 function createFood() {
     food.x = foodX[Math.floor(Math.random() * foodX.length)]; // random x position from array
     food.y = foodY[Math.floor(Math.random() * foodY.length)]; // random y position from array
@@ -43,11 +43,11 @@ function createFood() {
         }
     }
 }
-// drawing food on the canvas
+// drawing food
 function drawFood() {
     drawSquare(food.x, food.y, foodColor);
 }
-// setting the colors for the canvas. color1 - the background, color2 - the line color
+// setting the colors for the canvas
 function setBackground(color1, color2) {
     ctx.fillStyle = color1;
     ctx.strokeStyle = color2;
@@ -88,8 +88,7 @@ function changeDirection(keycode) {
 }
 // changing the snake's movement
 function moveSnake() {
-    var x = snake[0].x; // getting the head coordinates...hhehehe... getting head..
-    // anyway... read on...
+    var x = snake[0].x; // getting the head coordinates
     var y = snake[0].y;
 
     direction = directionQueue;
@@ -106,7 +105,7 @@ function moveSnake() {
     else if (direction == 'down') {
         y += cellSize;
     }
-    // removes the tail and makes it the new head...very delicate, don't touch this
+    // removes the tail and makes it the new head
     var tail = snake.pop();
     tail.x = x;
     tail.y = y;
@@ -126,27 +125,15 @@ function game() {
     var head = snake[0];
     // checking for wall collisions
     if (head.x < 0 || head.x > canvas.width - cellSize || head.y < 0 || head.y > canvas.height - cellSize) {
-        setBackground();
-        createSnake();
-        drawSnake();
-        createFood();
-        drawFood();
-        directionQueue = 'right';
-        score = 0;
+        openModal();
     }
-    // checking for colisions with snake's body
+    // checking for body collisions 
     for (i = 1; i < snake.length; i++) {
         if (head.x == snake[i].x && head.y == snake[i].y) {
-            setBackground();
-            createSnake();
-            drawSnake();
-            createFood();
-            drawFood();
-            directionQueue = 'right';
-            score = 0;
+            openModal();
         }
     }
-    // checking for collision with food
+    // checking for food collision 
     if (checkCollision(head.x, head.y, food.x, food.y)) {
         snake[snake.length] = { x: head.x, y: head.y };
         createFood();
@@ -154,7 +141,7 @@ function game() {
         score += 10;
     }
 
-    canvas.onkeydown = function (evt) {
+    window.onkeydown = function (evt) {
         evt = evt || window.event;
         changeDirection(evt.keyCode);
     };
@@ -182,4 +169,44 @@ function newGame() {
     }
 }
 
-newGame();
+function reset() {
+    setBackground();
+    createSnake();
+    drawSnake();
+    createFood();
+    drawFood();
+    directionQueue = 'right';
+    score = 0;
+    game();
+}
+
+// modals
+const modalStart = document.querySelector('.modal-start');
+const modalEnd = document.querySelector('.modal-end');
+const overlay = document.querySelector('.overlay');
+
+const openModal = function () {
+    modalEnd.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+};
+
+const closeModal = function (modal) {
+    if (modal === "start") {
+        modalStart.classList.add('hidden');
+        overlay.classList.add('hidden');
+    } else {
+        modalEnd.classList.add('hidden');
+        overlay.classList.add('hidden');
+        reset();
+    }
+};
+
+document.addEventListener('keydown', function (keypressed) {
+    if (keypressed.key === 'Enter' && !modalStart.classList.contains('hidden')) {
+        closeModal("start");
+        newGame();
+    }
+    else if (keypressed.key === 'Enter' && !modalEnd.classList.contains('hidden')) {
+        closeModal("end");
+    }
+});
