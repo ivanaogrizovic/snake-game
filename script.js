@@ -19,6 +19,7 @@ let food = {
 let score = 0;
 let highScore = 0;
 let hasStarted = false;
+let stopSnake = false;
 
 // pushes possible x and y positions to seperate arrays
 for (i = 0; i <= canvas.width - cellSize; i += cellSize) {
@@ -89,7 +90,7 @@ function changeDirection(keycode) {
 }
 // changing the snake's movement
 function moveSnake() {
-    let x = snake[0].x; // getting the head coordinates
+    if(!stopSnake) {let x = snake[0].x; // getting the head coordinates
     let y = snake[0].y;
 
     direction = directionQueue;
@@ -110,7 +111,7 @@ function moveSnake() {
     let tail = snake.pop();
     tail.x = x;
     tail.y = y;
-    snake.unshift(tail);
+    snake.unshift(tail);}
 }
 // checks if too coordinates match up
 function checkCollision(x1, y1, x2, y2) {
@@ -171,6 +172,7 @@ function newGame() {
 }
 
 function reset() {
+    stopSnake = false;
     checkScore(score);
     setBackground();
     createSnake();
@@ -199,6 +201,7 @@ const overlay = document.querySelector('.overlay');
 const openModal = function () {
     modalEnd.classList.remove('hidden');
     overlay.classList.remove('hidden');
+    stopSnake = true;
 };
 
 const closeModal = function (modal) {
