@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Snake Game</title>
-  </head>
-  <body>
-    <div class="modal modal-start">
-      <img src="start.gif" />
-    </div>
-    <div class="modal modal-end hidden">
-      <img src="game-over.gif" />
-    </div>
-    <div class="overlay"></div>
-    <div class="title">
-      <h1>SNAKE GAME</h1>
-    </div>
-    <div class="score-container">
-      <span>SCORE: </span><span class="score" id="score">0</span> <br />
-      <span>HIGHEST SCORE: </span><span class="hiScore" id="hiScore">0</span>
-    </div>
-    <div>
-      <canvas id="canvas" height="500px" width="500px"></canvas>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Snake Game</title>
+</head>
+
+<body>
+  <div class="modal modal-start">
+    <img src="assets/start.gif" />
+  </div>
+  <div class="modal modal-end hidden">
+    <img src="assets/game-over.gif" />
+  </div>
+  <div class="overlay"></div>
+  <div class="title">
+    <h1>SNAKE GAME</h1>
+  </div>
+  <div class="score-container">
+    <span>SCORE: </span><span class="score" id="score">0</span> <br />
+    <span>HIGHEST SCORE: </span><span class="hiScore" id="hiScore">0</span>
+  </div>
+  <div>
+    <canvas id="canvas" height="500px" width="500px"></canvas>
+  </div>
+</body>
+
 </html>

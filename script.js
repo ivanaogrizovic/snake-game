@@ -1,24 +1,24 @@
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-var scoreIs = document.getElementById('score');
-var hiScoreIs = document.getElementById('hiScore');
-var direction = '';
-var directionQueue = '';
-var fps = 70;
-var snake = [];
-var snakeLength = 5;
-var cellSize = 20;
-var snakeColor = '#5c5f82';
-var foodColor = '#d9726b';
-var foodX = [];
-var foodY = [];
-var food = {
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let scoreIs = document.getElementById('score');
+let hiScoreIs = document.getElementById('hiScore');
+let direction = '';
+let directionQueue = '';
+let fps = 70;
+let snake = [];
+let snakeLength = 5;
+let cellSize = 20;
+let snakeColor = '#5c5f82';
+let foodColor = '#d9726b';
+let foodX = [];
+let foodY = [];
+let food = {
     x: 0,
     y: 0
 };
-var score = 0;
-var highScore = 0;
-var hasStarted = false;
+let score = 0;
+let highScore = 0;
+let hasStarted = false;
 
 // pushes possible x and y positions to seperate arrays
 for (i = 0; i <= canvas.width - cellSize; i += cellSize) {
@@ -56,21 +56,20 @@ function setBackground(color1, color2) {
 
     ctx.fillRect(0, 0, canvas.height, canvas.width);
 
-    for (var x = 0.5; x < canvas.width; x += cellSize) {
+    for (let x = 0.5; x < canvas.width; x += cellSize) {
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
     }
-    for (var y = 0.5; y < canvas.height; y += cellSize) {
+    for (let y = 0.5; y < canvas.height; y += cellSize) {
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
     }
-
     ctx.stroke()
 }
 // creating the snake and pushing coordinates to the array
 function createSnake() {
     snake = [];
-    for (var i = snakeLength; i > 0; i--) {
+    for (let i = snakeLength; i > 0; i--) {
         k = i * cellSize;
         snake.push({ x: k, y: 0 });
     }
@@ -90,8 +89,8 @@ function changeDirection(keycode) {
 }
 // changing the snake's movement
 function moveSnake() {
-    var x = snake[0].x; // getting the head coordinates
-    var y = snake[0].y;
+    let x = snake[0].x; // getting the head coordinates
+    let y = snake[0].y;
 
     direction = directionQueue;
 
@@ -108,7 +107,7 @@ function moveSnake() {
         y += cellSize;
     }
     // removes the tail and makes it the new head
-    var tail = snake.pop();
+    let tail = snake.pop();
     tail.x = x;
     tail.y = y;
     snake.unshift(tail);
@@ -124,7 +123,7 @@ function checkCollision(x1, y1, x2, y2) {
 }
 // main game loop
 function game() {
-    var head = snake[0];
+    let head = snake[0];
     // checking for wall collisions
     if (head.x < 0 || head.x > canvas.width - cellSize || head.y < 0 || head.y > canvas.height - cellSize) {
         openModal();
