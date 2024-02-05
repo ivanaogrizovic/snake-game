@@ -85,7 +85,7 @@ function changeDirection(keycode) {
     if (keycode == 65 && direction != 'right') { directionQueue = 'left'; }
     else if (keycode == 87 && direction != 'down') { directionQueue = 'up'; }
     else if (keycode == 68 && direction != 'left') { directionQueue = 'right'; }
-    else if (keycode == 83 && direction != 'top') { directionQueue = 'down' }
+    else if (keycode == 83 && direction != 'up') { directionQueue = 'down' }
 }
 // changing the snake's movement
 function moveSnake() {
