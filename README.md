@@ -8,4 +8,4 @@ No dependencies needed.
 
 To play the game click here: https://ivanaogrizovic.github.io/snake-game/
 
-<img src="preview.gif"/>
+<img src="assets/preview.gif"/>
