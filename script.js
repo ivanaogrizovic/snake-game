@@ -157,6 +157,7 @@ function game() {
 }
 
 function newGame() {
+    canvas.style.border = "10px solid white";
     direction = 'right';
     directionQueue = 'right';
     ctx.beginPath();
@@ -196,7 +197,7 @@ function checkScore(newScore) {
 // modals
 const modalStart = document.querySelector('.modal-start');
 const modalEnd = document.querySelector('.modal-end');
-const overlay = document.querySelector('.overlay');
+const overlay = document.querySelector('.snake-overlay');
 
 const openModal = function () {
     modalEnd.classList.remove('hidden');

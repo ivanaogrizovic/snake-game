@@ -2,11 +2,6 @@
 
 * {
   margin: 0;
-  padding: 0;
-}
-
-html {
-  height: 100%;
 }
 
 body {
@@ -18,30 +13,43 @@ body {
   text-shadow: 4px 4px 4px #5c5f82;
   background-image: url("assets/background-image.gif");
   background-position: center;
-  /* Center the image */
   background-repeat: no-repeat;
-  /* Do not repeat the image */
   background-size: cover;
 }
 
-.score,
-.score-container {
+.snake-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.snake-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.snake-score,
+.snake-score-container {
   text-align: center;
   font-family: "VT323", monospace;
   font-size: 48px;
   color: #efb8cc;
   text-shadow: 2px 2px 2px #5c5f82;
-  margin: 0.5em;
 }
 
-canvas {
-  display: block;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  border: 10px solid white;
+.snake-canvas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.snake-modals-container {
+  position: absolute;
+  align-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .show-modal {
@@ -72,16 +80,12 @@ canvas {
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40%;
   z-index: 10;
+  position: relative;
 }
 
-.overlay {
-  position: absolute;
+.snake-overlay {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -89,4 +93,8 @@ canvas {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+}
+
+.modal-image {
+  width: 60%;
 }
